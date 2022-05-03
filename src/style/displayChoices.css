@@ -1,0 +1,7 @@
+.displayChoicesContainer{
+    position: absolute;
+    background-color: green;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}

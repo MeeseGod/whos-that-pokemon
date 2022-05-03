@@ -4,6 +4,10 @@ body{
 .mainImageContainer{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+.pokemonDisplayContainer{
+    position: relative;
 }
 .pokemonImage{
     width: 100%;

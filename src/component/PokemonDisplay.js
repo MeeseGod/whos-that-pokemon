@@ -4,11 +4,12 @@ import "../style/pokemonDisplay.css";
 
 export default function PokemonDisplay(props){
 
-    const [display, setDisplay] = useState(false);
+    const [xyValues, setxyValues] = useState([0, 0]);
+    const [choiceVisibility, setChoiceVisibility] = useState("hidden");
 
-    function changeDisplayStatus(){
-        if(display === false){setDisplay(true)}
-        else if(display === true){setDisplay(false)}
+    function changeChoiceVisibility(){
+        if(choiceVisibility === "hidden"){setChoiceVisibility("visible")}
+        else if(choiceVisibility === "visible"){setChoiceVisibility("hidden")}
     }
 
     function handleClick(event){
@@ -17,11 +18,13 @@ export default function PokemonDisplay(props){
         // This means that pokemon are always in the same percentage position regardless of size change so long as image ratio is maintained
         const x = Math.round((event.nativeEvent.offsetX / event.target.width) * 100);
         const y = Math.round((event.nativeEvent.offsetY / event.target.height) * 100);
+        setxyValues([x, y])
+        changeChoiceVisibility();
         console.log(x, y)
       }
 
       useEffect(() => {
-          if(props.pokemonDocs){
+        if(props.pokemonDocs){
           props.pokemonDocs.forEach(element => {
               console.log(element.data())
           });
@@ -31,8 +34,8 @@ export default function PokemonDisplay(props){
 
     return (
         <div className="pokemonDisplayContainer">
-            <div className="mainImageContainer">
-                <DisplayChoices/>
+            <div className="mainImageContainer" onClick={(e) => {handleClick(e)}}>
+                <DisplayChoices xyValues = {xyValues} choiceVisibility = {choiceVisibility}/>
                 <img className="pokemonImage" alt="A large collage of Pokemon" src={require("../images/pokemonCollage.jpg")}/>
             </div>
         </div>
