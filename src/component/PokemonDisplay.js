@@ -24,8 +24,8 @@ export default function PokemonDisplay(props){
       }
 
       useEffect(() => {
-        if(props.pokemonDocs){
-          props.pokemonDocs.forEach(element => {
+        if(props.randomPokemon){
+          props.randomPokemon.forEach(element => {
               console.log(element.data())
           });
         }
@@ -34,9 +34,9 @@ export default function PokemonDisplay(props){
 
     return (
         <div className="pokemonDisplayContainer">
-            <div className="mainImageContainer" onClick={(e) => {handleClick(e)}}>
-                <DisplayChoices xyValues = {xyValues} choiceVisibility = {choiceVisibility}/>
-                <img className="pokemonImage" alt="A large collage of Pokemon" src={require("../images/pokemonCollage.jpg")}/>
+            <div className="mainImageContainer">
+                <DisplayChoices xyValues = {xyValues} choiceVisibility = {choiceVisibility} randomPokemon = {props.randomPokemon}/>
+                <img className="pokemonImage" alt="A large collage of Pokemon" src={require("../images/pokemonCollage.jpg")} onClick={(e) => {handleClick(e)}}/>
             </div>
         </div>
     )
