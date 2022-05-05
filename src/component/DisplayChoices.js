@@ -13,26 +13,24 @@ export default function DisplayChoices(props){
 
     }
 
-    function test(){
+    function mapPokemon(){
         if(props.randomPokemon){
-            return <div> Ahhh </div>
+            let tempArray = []
+            props.randomPokemon.forEach(element => {
+                tempArray.push(element.data());
+            });
+            return tempArray.map(pokemon => {
+                return <div key={pokemon.name}>
+                    {pokemon.name}
+                </div>
+            })
         }
-        else return <div> Nope</div>
+        else return null
     }
-
-    useEffect(() => {
-        if(props.randomPokemon){
-          props.randomPokemon.forEach(element => {
-              console.log(element.data())
-          });
-        }
-      })
-
-
 
     return (
         <div className="displayChoicesContainer" style={{left: `${props.xyValues[0]}%`, top: `${props.xyValues[1]}%`, visibility: props.choiceVisibility}}>
-        {test()}
+        {mapPokemon()}
         </div>
     )
 }
