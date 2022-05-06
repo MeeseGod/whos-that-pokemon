@@ -26,7 +26,7 @@ export default function PokemonDisplay(props){
       useEffect(() => {
         if(props.randomPokemon){
           props.randomPokemon.forEach(element => {
-              console.log(element.data())
+              console.log(element)
           });
         }
       })

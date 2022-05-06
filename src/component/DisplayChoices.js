@@ -15,11 +15,7 @@ export default function DisplayChoices(props){
 
     function mapPokemon(){
         if(props.randomPokemon){
-            let tempArray = []
-            props.randomPokemon.forEach(element => {
-                tempArray.push(element.data());
-            });
-            return tempArray.map(pokemon => {
+            return props.randomPokemon.map(pokemon => {
                 return <div key={pokemon.name}>
                     {pokemon.name}
                 </div>
