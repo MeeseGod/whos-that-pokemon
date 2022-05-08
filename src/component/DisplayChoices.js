@@ -9,14 +9,15 @@ export default function DisplayChoices(props){
         // Change x and y values for display only IF the numbers would push the choice display over the border
     }
 
-    function checkChoice(){
-
+    function checkChoice(pokemon){
+        console.log(pokemon)
+        props.changeChoiceVisibility()
     }
 
     function mapPokemon(){
         if(props.randomPokemon){
             return props.randomPokemon.map(pokemon => {
-                return <div key={pokemon.name}>
+                return <div key={pokemon.name} className="pokemonChoice" onClick={() => {checkChoice(pokemon)}}>
                     {pokemon.name}
                 </div>
             })

@@ -19,7 +19,7 @@ export default function App() {
       [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
     }
     tempArray = tempArray.slice(0, 3);
-    console.log(tempArray)
+    // console.log(tempArray)
     setRandomPokemon(tempArray)
   }
 
